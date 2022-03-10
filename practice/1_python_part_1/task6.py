@@ -20,5 +20,13 @@ from typing import Tuple
 
 
 def get_min_max(filename: str) -> Tuple[int, int]:
-    ...
-
+  l = []
+  with open(filename) as opened_file:
+    for line in opened_file:
+      l.append(line.replace('\n',''))
+  for digit in l:
+    if digit.isdigit() or digit.startswith('-') and digit [1:].isdigit() == True:
+      l[l.index(digit)] = int(l[l.index(digit)])
+    else:
+      return print('Invalid file. Every line must be an integer')
+  return (min(l),max(l))
