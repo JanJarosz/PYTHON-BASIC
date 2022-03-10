@@ -15,4 +15,14 @@ from typing import List, Any
 
 
 def delete_from_list(list_to_clean: List, item_to_delete: Any) -> List:
-    ...
+  i=0
+  while True:
+    try:
+      index = list_to_clean.index(item_to_delete)
+    except ValueError:
+      if i ==0 :
+        print('There is no such item')
+      break
+    list_to_clean.pop(index)
+    i=i+1
+  return list_to_clean

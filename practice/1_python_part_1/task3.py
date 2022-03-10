@@ -16,4 +16,22 @@ from typing import Iterable
 
 
 def build_from_unique_words(*lines: Iterable[str], word_number: int) -> str:
-    ...
+  words = []
+  final = ''
+
+  for line in lines:
+    unique =[]
+    temp = line.split()
+
+    for i in temp:
+      if i not in unique:
+        unique.append(i)  
+    if word_number > len(unique)-1:
+      pass
+    else:
+      words.append(unique[word_number])
+
+  for word in words:
+    final = final + word +' '
+  
+  return final[:-1]
