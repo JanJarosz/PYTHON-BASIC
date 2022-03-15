@@ -18,6 +18,22 @@ Examples:
 
 
 def read_numbers(n: int) -> str:
-    ...
-
-
+    l = []
+    denominator = 0
+    nominator = 0
+    for i in range(n):
+        l.append(input('Enter your input '))
+    for item in l:
+        try:
+            nominator += float(item)
+            denominator += 1
+        except TypeError:
+            pass
+        except ValueError:
+            pass
+    try:
+        average = nominator / denominator
+    except ZeroDivisionError:
+        print('No number entered')
+        return
+    return average
