@@ -10,7 +10,8 @@ Example:
         file1.txt (content: "abc\ndef\nxyz", encoding: UTF-8)
         file2.txt (content: "xyz,def,abc", encoding: CP1252)
 """
-
+import os
+import io
 
 def generate_words(n=20):
     import string
@@ -22,3 +23,13 @@ def generate_words(n=20):
         words.append(word)
 
     return words
+
+w1 = '\n'.join(generate_words())
+w2_temp = generate_words()[::-1]
+w2 = ','.join(w2_temp)
+
+with io.open('file1.txt', 'w', encoding = 'utf8') as f:
+    f.write(w1)
+
+with io.open('file2.txt', 'w', encoding = 'cp1252') as f:
+    f.write(w2)
